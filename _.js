@@ -61,5 +61,26 @@ const _ = {
       if (keyExists) return key;
     } return undefined;
   },
+  drop(array, number){
+    /*
+    if(!number) return array.slice(1);
+    if(number === 0) return array;
+    return array.slice(number);
+    */
+    if(!number) {
+      number = 1;
+    }
+    let droppedArray = array.slice(number);
+    return droppedArray;
+  },
+  chunk(array, size){
+    if(!size){ size = 1 };
+    let results = [];
+    for(let i = 0; i < array.length; i+=size){
+			let chunk = array.slice(i, i+size);
+      results.push(chunk);
+    }
+    return results;
+  }
 
 }
