@@ -30,6 +30,36 @@ const _ = {
     let paddingToEnd = totalPadding - paddingToStart;
     let paddedString = " ".repeat(paddingToStart) + string + " " .repeat(paddingToEnd);
     return paddedString;
-  }
+  },
+  has(object, key){
+    /* 
+    //this was my initial solution
+    if(!object[key]){
+      return false;
+    } else {
+      return true;
+    } 
+    //this is their suggestion
+    const hasValue = object[key] !== undefined;
+    return hasValue;  
+    */
+    //my refactored solution
+    const hasValue = object[key] ? true : false;
+    return hasValue;
+  },
+  invert(object){
+    const invertedObj = {};
+    for(let key in object){
+      let originalValue = object[key]
+      invertedObj[originalValue] = key
+    }
+    return invertedObj;
+  },
+  findKey(object, predicate){
+    for(let key in object){
+      let keyExists = predicate(object[key]);
+      if (keyExists) return key;
+    } return undefined;
+  },
 
 }
